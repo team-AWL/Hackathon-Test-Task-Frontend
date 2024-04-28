@@ -74,6 +74,11 @@
     color: white;
     border: 1px solid white;
 }
+.registration_table >button.selected{
+    background: black;
+    color: white;
+    border: 1px solid white;
+}
 .stages_container{
     display: flex;
     justify-content: space-around;
@@ -93,6 +98,7 @@
 }
 
 .functional_buttons{
+    font-size: 1.2em;
     margin-top: 20px;
     align-items: center;
     display: flex;

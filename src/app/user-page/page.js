@@ -10,17 +10,20 @@ const UserPage = () => {
     const [editing, setEditing] = useState(false);
     const [editedUsername, setEditedUsername] = useState('');
     const [editedUserbio, setEditedUserbio] = useState('');
+    const [userImg, setUserImg] = useState('');
 
     useEffect(() => {
         const token = localStorage.getItem('accessToken');
         if (token) {
             getCurrentUserData(token);
         }
+
     }, []);
 
     const getCurrentUserData = async (token) => {
         try {
             const userData = await getCurrentUser(token);
+            setUserImg(userData.imageUrl)
             setUsermail(userData.email);
             setUserbio(userData.bio);
             setUsername(userData.name);
@@ -56,7 +59,7 @@ const UserPage = () => {
             </div>
             <div className={styles.info}>
                 <div className={styles.leftSection}>
-                    <img src="/person2.svg" alt="Avatar" className={styles.avatar} />
+                    <img src={userImg} alt="Avatar" className={styles.avatar} />
                 </div>
                 <div className={styles.rightSection}>
                     {editing ? (

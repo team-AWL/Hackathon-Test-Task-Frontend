@@ -1,13 +1,67 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Modal from './modal';
 import styles from './needs.module.css';
+import {router} from "next/client";
+import {useRouter} from "next/navigation";
+import {getCurrentUser, getNeedFundraising, getNeedHumanitariam} from "@/util/api";
+import ModalFound from "@/app/needs/modal_make_found";
 
 const Needs = () => {
+    const [fundraisingData, setFundraisingData] = useState([]);
+    const [dataHumanitarian, setHumanitarianData] = useState([]);
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const token = localStorage.getItem('accessToken');
+            if (token) {
+                try {
+                    const dataFundraising = await getNeedFundraising(token);
+                    const dataHumanitarian = await getNeedHumanitariam(token);
+
+                    if (dataFundraising && Array.isArray(dataFundraising)) {
+                        setFundraisingData(dataFundraising);
+                    }
+
+                    if (dataHumanitarian && Array.isArray(dataHumanitarian)) {
+                        setHumanitarianData(dataHumanitarian);
+
+                    }
+                } catch (error) {
+                    console.error('Error fetching data:', error);
+                }
+            }
+        };
+
+        fetchData();
+    }, []);
+    // const [isHelper, setIsHelper] = useState(false);
+    const isHelper = !localStorage.getItem('wantToAskHelp')
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const token = localStorage.getItem('token');
+                if (token) {
+                    const userData = await getCurrentUser(token);
+                    console.log(userData);
+                    setIsHelper(userData.isHelper);
+                }
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        };
+
+        fetchData();
+    });
+    const router= useRouter();
     const [showModal, setShowModal] = useState(false);
+    const [showModalFound, setShowModalFound] = useState(false);
+
     const [activeContent, setActiveContent] = useState(1);
-    const wantAskHelp = localStorage.getItem('wantToAskHelp');
+
 
     const toggleModal = () => {
         setShowModal(!showModal);
@@ -16,24 +70,33 @@ const Needs = () => {
     const handleContentChange = (contentNumber) => {
         setActiveContent(contentNumber);
     };
+    const handleCloseModal = () =>{
+        setShowModal(false)
+    }
 
     return (
         <>
-            <p className={styles.main}>
+            <p
+                onClick={() => {
+                    router.push('/');
+                }}
+                className={styles.main}
+            >
                 Головна / <span className={styles.needText}>Потреби</span>
             </p>
-            <div className={styles.needsText}>
-                Потреби
-            </div>
-            <div className={styles.needsContainer} >
-                <div className={styles.leftSection} >
+            <div className={styles.needsText}>Потреби</div>
+            <div className={styles.needsContainer}>
+                <div className={styles.leftSection}>
                     <p className={styles.leftSectionText}>
                         На цій сторінці ви знайдете інформацію про термінові потреби людей,
                         військових та інших осіб, які потребують допомоги в різних сферах життя.
                     </p>
-                    {wantAskHelp && <button className={styles.registerButton} onClick={toggleModal}>Зареєструвати потребу</button>
-                    }
-                    {showModal && <Modal/>}
+                    {isHelper ?
+                        null
+                     : ( <button className={styles.registerButton} onClick={toggleModal}>
+                        Зареєструвати потребу
+                    </button>)}
+                    {showModal && <Modal handleCloseModal = {handleCloseModal}/>} {/* Render the modal component if showModal is true */}
                 </div>
                 <div className={styles.rightSection}>
                     <img src="/flag.svg" alt="Flag" className={styles.flagImage} />
@@ -45,80 +108,92 @@ const Needs = () => {
                 </div>
             </div>
             <div className={styles.switcher}>
-                <button className={activeContent === 1 ? styles.activeButton : styles.button} onClick={() => handleContentChange(1)}>Активні збори</button>
-                <button className={activeContent === 2 ? styles.activeButton : styles.button} onClick={() => handleContentChange(2)}>Гуманітарна допомога</button>
-                <button className={activeContent === 3 ? styles.activeButton : styles.button} onClick={() => handleContentChange(3)}>Психологічна підтримка</button>
+                <button
+                    className={activeContent === 1 ? styles.activeButton : styles.button}
+                    onClick={() => handleContentChange(1)}
+                >
+                    Активні збори
+                </button>
+                <button
+                    className={activeContent === 2 ? styles.activeButton : styles.button}
+                    onClick={() => handleContentChange(2)}
+                >
+                    Гуманітарна допомога
+                </button>
+                <button
+                    className={activeContent === 3 ? styles.activeButton : styles.button}
+                    onClick={() => handleContentChange(3)}
+                >
+                    Психологічна підтримка
+                </button>
             </div>
             <div className={styles.extraHelpContainer}>
                 <div className={styles.sectionsContainer}>
                     {activeContent === 1 && (
-                        <div>
-                            <div className={styles.titleContainer}>
-                                <h2 className={styles.title}>Збір на тактичні рюкзаки</h2>
-                                <img src="/mark.svg" alt="Mark" className={styles.markImage} />
-                            </div>
-                            <div className={styles.divided}>
-                                <div className={styles.leftSection1}>
-                                    <div className={styles.item}>
-                                        <span className={styles.itemText}>потрібна сума</span>
-                                        <span className={styles.itemNumber}>100 000 +</span>
+                        <>
+                            {fundraisingData.map((item, index) => (
+                                <div key={index}>
+                                    <div className={styles.titleContainer}>
+                                        <h2 className={styles.title}>Збір на тактичні рюкзаки</h2>
+                                        <img src="/mark.svg" alt="Mark" className={styles.markImage} />
                                     </div>
-                                    <div className={styles.item}>
-                                        <span className={styles.itemText}>тактичні рюкзаки</span>
-                                        <span className={styles.itemNumber}>15</span>
-                                    </div>
-                                    <div className={styles.item}>
-                                        <span className={styles.itemText}>Бригада</span>
-                                        <span className={styles.itemNumber}>128</span>
-                                    </div>
-                                    <div className={styles.quote}>
-                                        <span className={styles.quoteText}>"</span>
-                                        <p className={styles.quoteContent}>
-                                            Ми, 128 бригада, стоїмо на передовій, де кожен день зустрічаємося з різноманітними викликами та труднощами. У зв'язку з постійною потребою у підтримці, ми звертаємося до вас з проханням про необхідність рюкзаків.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className={styles.rightSection1}>
-                                    <img src="/main-page/extraHelp.svg" alt="Extra" className={styles.extraImage} />
-                                    <div className={styles.learnMoreContainer}>
-                                        <div className={styles.learnMore}>
-                                            <p className={styles.learnMoreText}>Дізнатись більше</p>
-                                            <img src="/main-page/arrow2.svg" alt="Arrow" className={styles.arrowIcon} />
+                                    <div className={styles.divided}>
+                                        <div className={styles.leftSection1}>
+                                            <div className={styles.item}>
+                                                <span className={styles.itemText}>потрібна сума</span>
+                                                <span className={styles.itemNumber}>{item.moneyGoal}</span>
+                                            </div>
+                                            <div className={styles.item}>
+                                                <span className={styles.itemText}>тактичні рюкзаки</span>
+                                                <span className={styles.itemNumber}>{item.backpacks}</span>
+                                            </div>
+                                            <div className={styles.item}>
+                                                <span className={styles.itemText}>Бригада</span>
+                                                <span className={styles.itemNumber}>{item.forWhom}</span>
+                                            </div>
+                                            <div className={styles.quote}>
+                                                <span className={styles.quoteText}>"</span>
+                                                <p className={styles.quoteContent}>{item.quote}</p>
+                                            </div>
+                                        </div>
+                                        <div className={styles.rightSection1}>
+                                            <img src="/main-page/extraHelp.svg" alt="Extra" className={styles.extraImage} />
+
+                                            <button onClick={()=>setShowModalFound(true)} className={styles.registerButton}>Зробити внесок</button>
+                                            {showModalFound && <ModalFound data={fundraisingData[index]}/>}
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            ))}
+                        </>
                     )}
                     {activeContent === 2 && (
-                        <div>
-                            <div className={styles.titleContainer}>
-                                <h2 className={styles.title}>Гуманітарна допомога</h2>
-                                <img src="/mark.svg" alt="Mark" className={styles.markImage} />
-                            </div>
-                            <div className={styles.divided}>
-                                <div className={styles.leftSection1}>
-                                    <div className={styles.item}>
-                                        <span className={styles.itemText}>Місто</span>
-                                        <span className={styles.itemNumber}>Львів</span>
+                        <>
+                            {dataHumanitarian.map((item, index) => (
+                                <div key={index}>
+                                    <div className={styles.titleContainer}>
+                                        <h2 className={styles.title}>Гуманітарна допомога</h2>
+                                        <img src="/mark.svg" alt="Mark" className={styles.markImage} />
                                     </div>
-                                    <div className={styles.quote}>
-                                        <span className={styles.quoteText}>"</span>
-                                        <p className={styles.quoteContent}>Ми збираємо продукти харчування, медичні засоби,
-                                            одяг та інші необхідні ресурси для тих, хто втратив все через воєнні дії.</p>
-                                    </div>
-                                </div>
-                                <div className={styles.rightSection1}>
-                                    <img src="/main-page/extraHelp.svg" alt="Extra" className={styles.extraImage} />
-                                    <div className={styles.learnMoreContainer}>
-                                        <div className={styles.learnMore}>
-                                            <p className={styles.learnMoreText}>Дізнатись більше</p>
-                                            <img src="/main-page/arrow2.svg" alt="Arrow" className={styles.arrowIcon} />
+                                    <div className={styles.divided}>
+                                        <div className={styles.leftSection1}>
+                                            <div className={styles.item}>
+                                                <span className={styles.itemText}>Місто</span>
+                                                <span className={styles.itemNumber}>{dataHumanitarian.city}</span>
+                                            </div>
+                                            <div className={styles.quote}>
+                                                <span className={styles.quoteText}>"</span>
+                                                <p className={styles.quoteContent}>{dataHumanitarian.description}</p>
+                                            </div>
+                                        </div>
+                                        <div className={styles.rightSection1}>
+                                            <img src="/main-page/extraHelp.svg" alt="Extra" className={styles.extraImage} />
+
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            ))}
+                        </>
                     )}
                     {activeContent === 3 && (
                         <div>
@@ -148,5 +223,4 @@ const Needs = () => {
         </>
     );
 };
-
 export default Needs;

@@ -28,6 +28,7 @@ export default function Registration() {
                                     </g>
                                 </svg>
                             </div>
+                            <p style={{textAlign:'center',fontSize:'1.2em'}}><Link style={{color:'blue'}} href='/login'>Увійдіть</Link>, щоб продовжити</p>
 
                         </div>
                     </div>
