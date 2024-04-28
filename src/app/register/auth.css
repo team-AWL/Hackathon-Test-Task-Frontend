@@ -1,12 +1,12 @@
-.wrapper{
+.wrapper {
     height: auto;
     width: 100vw;
-    display: flex ;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.registration_container{
+.registration_container {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -16,25 +16,25 @@
     margin-bottom: 5rem;
 }
 
-.registration_table{
+.registration_table {
     gap: 20px;
-    height:auto;
+    height: auto;
     display: flex;
     flex-direction: column;
 }
 
-.continue{
+.continue {
     background: none;
     border: none;
     font-family: inherit;
     font-size: 1.1em;
 }
 
-.main_text{
+.main_text {
     font-size: 40px;
 }
 
-.under_main_text{
+.under_main_text {
     font-size: 36px;
     text-align: center;
 }
@@ -45,11 +45,11 @@
     font-weight: bold;
 }
 
-.email-icon{
+.email-icon {
     text-align: center;
 }
 
-.forget_password_button{
+.forget_password_button {
     color: #BA1E1E;
     text-align: right;
     margin: 0;
@@ -57,21 +57,21 @@
     font-weight: bold;
 }
 
-.text_in_sent_email_again{
+.text_in_sent_email_again {
     text-align: center;
     font-size: 13px;
 }
 
-.label_under_login{
+.label_under_login {
     font-size: 16px;
     font-weight: bold;
 }
 
-.regisration_table >h2{
+.regisration_table>h2 {
     text-align: center;
 }
 
-.registration_table >button{
+.registration_table>button {
     background: transparent;
     border: 1px solid black;
     border-radius: 5px;
@@ -82,24 +82,24 @@
     font-size: 1.2em;
 }
 
-.registration_table >button:hover{
+.registration_table>button:hover {
     background: black;
     color: white;
     border: 1px solid white;
 }
 
-.registration_table >button.selected{
+.registration_table>button.selected {
     background: black;
     color: white;
     border: 1px solid white;
 }
 
-.stages_container{
+.stages_container {
     display: flex;
     justify-content: space-around;
 }
 
-.stage{
+.stage {
     border-radius: 50%;
     border: 1px solid black;
     width: 60px;
@@ -110,11 +110,11 @@
 
 }
 
-.stage.one{
+.stage.one {
     background: rgba(186, 30, 30, 0.74);
 }
 
-.functional_buttons{
+.functional_buttons {
     font-size: 1.2em;
     margin-top: 20px;
     align-items: center;
@@ -123,13 +123,13 @@
     justify-content: space-between;
 }
 
-.inputs_container{
+.inputs_container {
     display: flex;
     width: 100%;
     justify-content: center;
 }
 
-.inputs_table{
+.inputs_table {
     display: flex;
     flex-direction: column;
     width: 70%;
@@ -137,36 +137,36 @@
     font-size: 22px;
 }
 
-.inputs_table > h2{
+.inputs_table>h2 {
     padding: 40px 0px 20px 0px;
     text-align: center;
 }
 
-.image{
+.image {
     display: flex;
     justify-content: center;
 }
 
-.arrow{
+.arrow {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.inputs_table > input{
+.inputs_table>input {
     border-top: black;
     border-radius: 5px;
     padding: 5px 10px;
     font-size: 20px;
 }
 
-.enter{
+.enter {
     display: flex;
     margin: 20px 0;
     justify-content: center;
 }
 
-.enter > button{
+.enter>button {
     color: white;
     border-radius: 15px;
     background: #212121;
@@ -184,7 +184,7 @@
     color: #757575;
     font-size: 14px;
     font-weight: 500;
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 
     background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=);
     background-color: white;
@@ -202,9 +202,9 @@
     &:focus {
         outline: none;
         box-shadow:
-                0 -1px 0 rgba(0, 0, 0, .04),
-                0 2px 4px rgba(0, 0, 0, .25),
-                0 0 0 3px #c8dafc;
+            0 -1px 0 rgba(0, 0, 0, .04),
+            0 2px 4px rgba(0, 0, 0, .25),
+            0 0 0 3px #c8dafc;
     }
 
     &:disabled {

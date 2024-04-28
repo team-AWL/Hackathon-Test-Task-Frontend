@@ -1,12 +1,12 @@
 'use client'
 import Link from "next/link";
-import {useState} from "react";
+import { useState } from "react";
 import '../register/auth.css'
-import {login} from "@/util/api";
-import {useRouter} from "next/navigation";
+import { login } from "@/util/api";
+import { useRouter } from "next/navigation";
 
-export default function Login(){
-    const router= useRouter()
+export default function Login() {
+    const router = useRouter()
     const [formData, setFormData] = useState({
         email: "",
         password: ""
@@ -25,11 +25,11 @@ export default function Login(){
 
         login(formData)
             .then(response => {
-                    if(response.token){
-                        localStorage.setItem('accessToken',response.token)
-                        router.push('/')
-                    }
-                })
+                if (response.token) {
+                    localStorage.setItem('accessToken', response.token)
+                    router.push('/')
+                }
+            })
 
 
             .catch(error => {
@@ -37,7 +37,7 @@ export default function Login(){
             });
     };
 
-    return(
+    return (
         <div className='wrapper'>
             <div className='registration_container'>
                 <div className='registration_table'>
@@ -69,14 +69,14 @@ export default function Login(){
                                 <button type="button" className="login-with-google-btn" >
                                     Швидка авторизація
                                 </button>
-                               </div>
+                            </div>
                         </div>
                         <div className='enter'>
                             {/*<Link href='/'>Повернутись на головну</Link>*/}
                             <button className='continue' type="submit">Увійти</button>
 
                         </div>
-                        <p >Немає облікового запису? Тоді можете <Link style={{color:'blue'}} href='/register'>створити його</Link> </p>
+                        <p >Немає облікового запису? Тоді можете <Link style={{ color: 'blue' }} href='/register'>створити його</Link> </p>
                     </form>
                 </div>
             </div>

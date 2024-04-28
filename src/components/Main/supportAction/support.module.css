@@ -6,7 +6,7 @@
 .contentWrapper {
   display: flex;
   align-items: center;
-  flex-direction: column; 
+  flex-direction: column;
 }
 
 .blazeImage {

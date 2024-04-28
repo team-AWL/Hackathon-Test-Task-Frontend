@@ -1,0 +1,31 @@
+.container {
+    text-align: center;
+    margin-top: 50vh;
+    transform: translateY(-50%);
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.number {
+    font-size: 180px;
+    font-family: 'Unbounded';
+    font-weight: 600;
+    margin: 0 20px;
+}
+
+.image {
+    width: 200px;
+    height: 200px;
+}
+
+.message {
+    font-size: 64px;
+}
+
+.subMessage {
+    font-size: 48px;
+}

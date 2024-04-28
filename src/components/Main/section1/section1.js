@@ -1,10 +1,10 @@
 'use client'
 import styles from './section1.module.css';
-import {useRouter} from "next/navigation";
-import {useEffect} from "react";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 const Section1 = () => {
-    const router= useRouter()
+  const router = useRouter()
 
   return (
     <div className={styles.section1}>
@@ -23,7 +23,7 @@ const Section1 = () => {
         </div>
         <div className={styles.textBesideImage}>
           <span style={{ color: 'black' }}>В</span> ДІЇ
-          <button onClick={() =>{router.push('/needs')}} className={styles.registerButton}>Перейти до потреб</button>
+          <button onClick={() => { router.push('/needs') }} className={styles.registerButton}>Перейти до потреб</button>
         </div>
       </div>
       <div className={styles.endedText}>
