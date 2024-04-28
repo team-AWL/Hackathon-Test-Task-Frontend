@@ -76,7 +76,7 @@ export default function Login() {
                             <button className='continue' type="submit">Увійти</button>
 
                         </div>
-                        <p >Немає облікового запису? Тоді можете <Link style={{ color: 'blue' }} href='/register'>створити його</Link> </p>
+                        <p className='registerLinkText'>Немає облікового запису? Тоді можете <Link style={{ color: 'blue' }} href='/register'>створити його</Link> </p>
                     </form>
                 </div>
             </div>

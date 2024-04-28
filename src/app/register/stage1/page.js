@@ -58,7 +58,7 @@ export default function Registration({ history }) {
                         <div className='stage'>2</div>
 
                     </div>
-                    <p>Вкажіть актуальну інформацію про вас</p>
+                    <p className='registerText'>Вкажіть актуальну інформацію про вас</p>
                     <form onSubmit={handleSubmit}>
                         <div className='inputs_container'>
                             <div className='inputs_table'>
