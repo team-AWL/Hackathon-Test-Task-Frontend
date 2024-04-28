@@ -54,7 +54,7 @@ const Modal = ({ handleCloseModal }) => {
         event.preventDefault();
         try {
             const token = localStorage.getItem('accessToken');
-            const responseData = await registerHumanitarianAid(formDataFundraising, token);
+            const responseData = await registerHumanitarianAid(formDataHumanitarianAid, token);
             console.log('Response data:', responseData);
             handleCloseModal();
             window.location.reload();

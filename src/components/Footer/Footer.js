@@ -1,6 +1,37 @@
+"use client"
 import styles from './footer.module.css';
+import {login, subscribeToNewNeeds} from "@/util/api";
+import {useState} from "react";
 
 const Footer = () => {
+  const [formData, setFormData] = useState({
+    email: ""
+  });
+
+  const handleInputChange = event => {
+    const { name, value } = event.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+  const handleKeyDown = event => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+
+      subscribeToNewNeeds(formData)
+          .then(response => {
+            setFormData(prevState => ({
+              ...prevState,
+              email: "" // Очищаємо поле email
+            }));
+          })
+          .catch(error => {
+            console.log(error);
+          });
+    }
+  };
+
   return (
 <div className={styles.footer}>
  
@@ -13,7 +44,7 @@ const Footer = () => {
         </p>
       </div>
       <div className={styles.footeremail2}>
-        <input type="email" placeholder="твій Email..." />
+        <input name="email" value={formData.email} onChange={handleInputChange} type="email" placeholder="твій Email..."  onKeyDown={handleKeyDown} />
       </div>
     </div>
     <div className={styles.socialnet}>

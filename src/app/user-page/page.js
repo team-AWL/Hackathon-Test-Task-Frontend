@@ -14,12 +14,10 @@ const UserPage = () => {
     const [userImg, setUserImg] = useState('');
     const token_auth = useSearchParams().get('token')
     console.log(token_auth)
-
     useEffect(() => {
         if(token_auth){
             localStorage.setItem('accessToken',token_auth)
             const user = getCurrentUserData(token_auth)
-            console.log(user)
         }
 
     }, []);

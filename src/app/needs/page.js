@@ -134,7 +134,7 @@ const Needs = () => {
                             {fundraisingData.map((item, index) => (
                                 <div key={index}>
                                     <div className={styles.titleContainer}>
-                                        <h2 className={styles.title}>Збір на тактичні рюкзаки</h2>
+                                        <h2 className={styles.title}>{item.goalName}</h2>
                                         <img src="/mark.svg" alt="Mark" className={styles.markImage} />
                                     </div>
                                     <div className={styles.divided}>
@@ -144,8 +144,8 @@ const Needs = () => {
                                                 <span className={styles.itemNumber}>{item.moneyGoal}</span>
                                             </div>
                                             <div className={styles.item}>
-                                                <span className={styles.itemText}>тактичні рюкзаки</span>
-                                                <span className={styles.itemNumber}>{item.backpacks}</span>
+                                                <span className={styles.itemText}>Потреба</span>
+                                                <span className={styles.itemNumber}>{item.needyThing}</span>
                                             </div>
                                             <div className={styles.item}>
                                                 <span className={styles.itemText}>Бригада</span>
@@ -153,7 +153,7 @@ const Needs = () => {
                                             </div>
                                             <div className={styles.quote}>
                                                 <span className={styles.quoteText}>"</span>
-                                                <p className={styles.quoteContent}>{item.quote}</p>
+                                                <p className={styles.quoteContent}>{item.description}</p>
                                             </div>
                                         </div>
                                         <div className={styles.rightSection1}>
@@ -172,18 +172,18 @@ const Needs = () => {
                             {dataHumanitarian.map((item, index) => (
                                 <div key={index}>
                                     <div className={styles.titleContainer}>
-                                        <h2 className={styles.title}>Гуманітарна допомога</h2>
+                                        <h2 className={styles.title}>{item.needName}</h2>
                                         <img src="/mark.svg" alt="Mark" className={styles.markImage} />
                                     </div>
                                     <div className={styles.divided}>
                                         <div className={styles.leftSection1}>
                                             <div className={styles.item}>
                                                 <span className={styles.itemText}>Місто</span>
-                                                <span className={styles.itemNumber}>{dataHumanitarian.city}</span>
+                                                <span className={styles.itemNumber}>{item.city}</span>
                                             </div>
                                             <div className={styles.quote}>
                                                 <span className={styles.quoteText}>"</span>
-                                                <p className={styles.quoteContent}>{dataHumanitarian.description}</p>
+                                                <p className={styles.quoteContent}>{item.description}</p>
                                             </div>
                                         </div>
                                         <div className={styles.rightSection1}>

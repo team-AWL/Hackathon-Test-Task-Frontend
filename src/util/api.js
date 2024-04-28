@@ -10,6 +10,10 @@ export async function login(body) {
     const response = await axios.post(`${API_BASE_URL}/auth/signin`, body);
     return response.data;
 }
+export async function subscribeToNewNeeds(body) {
+    const response = await axios.post(`${API_BASE_URL}/email/addEmail`, body);
+    return response.data;
+}
 
 export async function registerFundraising(body, token) {
     const config = {

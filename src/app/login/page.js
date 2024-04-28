@@ -28,7 +28,7 @@ export default function Login() {
             .then(response => {
                 if (response.token) {
                     localStorage.setItem('accessToken', response.token)
-                    router.push('/')
+                    router.push('/user-page')
                 }
             })
 
