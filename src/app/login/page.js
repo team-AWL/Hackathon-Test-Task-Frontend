@@ -2,8 +2,9 @@
 import Link from "next/link";
 import { useState } from "react";
 import '../register/auth.css'
-import { login } from "@/util/api";
-import { useRouter } from "next/navigation";
+import {login} from "@/util/api";
+import {useRouter} from "next/navigation";
+import {GOOGLE_AUTH_URL} from "@/constants";
 
 export default function Login() {
     const router = useRouter()
@@ -64,12 +65,12 @@ export default function Login() {
                                     onChange={handleInputChange}
                                     required
                                 />
-                                <p className='forget_password_button' ><Link href='/forget'>Забули пароль?</Link> </p>
+                                <p className='forget_password_button'><Link href='/forget'>Забули пароль?</Link> </p>
 
-                                <button type="button" className="login-with-google-btn" >
+                                <a style={{cursor:"pointer"}} href={GOOGLE_AUTH_URL} className="login-with-google-btn" >
                                     Швидка авторизація
-                                </button>
-                            </div>
+                                </a>
+                               </div>
                         </div>
                         <div className='enter'>
                             {/*<Link href='/'>Повернутись на головну</Link>*/}

@@ -14,7 +14,7 @@ const Header = () => {
     if (confirmLogout) {
       localStorage.removeItem('accessToken');
       setHasAccessToken(false)
-
+      router.push("/login")
     }
   };
   const handleRedirectRegister = () =>{

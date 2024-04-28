@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react';
-import { ACCESS_TOKEN } from "@/constants";
+import {ACCESS_TOKEN, GOOGLE_AUTH_URL} from "@/constants";
 
 import Link from "next/link";
 import { signup } from '@/util/api'; // Import your signup function
@@ -55,7 +55,41 @@ export default function Registration({ history }) {
                                 <path d="M63.7071 8.70711C64.0976 8.31658 64.0976 7.68342 63.7071 7.29289L57.3431 0.928932C56.9526 0.538408 56.3195 0.538408 55.9289 0.928932C55.5384 1.31946 55.5384 1.95262 55.9289 2.34315L61.5858 8L55.9289 13.6569C55.5384 14.0474 55.5384 14.6805 55.9289 15.0711C56.3195 15.4616 56.9526 15.4616 57.3431 15.0711L63.7071 8.70711ZM0 9H63V7H0V9Z" fill="black" />
                             </svg>
                         </div>
-                        <div className='stage'>2</div>
+                        <p>Вкажіть актуальну інформацію про вас</p>
+                        <form onSubmit={handleSubmit}>
+                            <div className='inputs_container'>
+                                <div className='inputs_table'>
+                                    <label>Ваше ім'я</label>
+                                    <input
+                                        type='text'
+                                        name='firstName'
+                                        placeholder="Ім'я"
+                                        value={formData.firstName}
+                                        onChange={handleInputChange}
+                                        required
+                                    />
+                                    <label>Ваш Email</label>
+                                    <input
+                                        type='email'
+                                        name='email'
+                                        placeholder="Email"
+                                        value={formData.email}
+                                        onChange={handleInputChange}
+                                        required
+                                    />
+                                    <label>Ваш пароль</label>
+                                    <input
+                                        type='password'
+                                        name='password'
+                                        placeholder="Пароль"
+                                        value={formData.password}
+                                        onChange={handleInputChange}
+                                        required
+                                    />
+                                    <a style={{cursor:"pointer"}} href={GOOGLE_AUTH_URL} className="login-with-google-btn" >
+                                        Швидка авторизація
+                                    </a>
+                                </div>
 
                     </div>
                     <p className='registerText'>Вкажіть актуальну інформацію про вас</p>
