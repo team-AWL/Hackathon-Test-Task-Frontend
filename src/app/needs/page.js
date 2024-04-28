@@ -70,6 +70,9 @@ const Needs = () => {
     const handleContentChange = (contentNumber) => {
         setActiveContent(contentNumber);
     };
+    const handleCloseModal = () =>{
+        setShowModal(false)
+    }
 
     return (
         <>
@@ -93,7 +96,7 @@ const Needs = () => {
                      : ( <button className={styles.registerButton} onClick={toggleModal}>
                         Зареєструвати потребу
                     </button>)}
-                    {showModal && <Modal />} {/* Render the modal component if showModal is true */}
+                    {showModal && <Modal handleCloseModal = {handleCloseModal}/>} {/* Render the modal component if showModal is true */}
                 </div>
                 <div className={styles.rightSection}>
                     <img src="/flag.svg" alt="Flag" className={styles.flagImage} />
