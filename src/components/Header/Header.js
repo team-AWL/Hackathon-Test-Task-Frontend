@@ -7,7 +7,7 @@ import {getCurrentUser} from "@/util/api";
 
 const Header = () => {
   const router = useRouter();
-  const [userAvatar, setUserAvatar] = useState('/Users/admin/Desktop/Hackathon-Test-Task-Frontend/public/person2.svg');
+  const [userAvatar, setUserAvatar] = useState('/person2.svg');
   const [hasAccessToken,setHasAccessToken] =  useState(!!localStorage.getItem('accessToken'));
   const handleLogOut = () => {
     const confirmLogout = window.confirm('Ви впевнені, що хочете вийти?');
@@ -65,7 +65,7 @@ const Header = () => {
       </div>
       <nav className={styles.nav}>
         <ul className={styles.navList}>
-          <li className={styles.navItem} onClick={handleNeedsClick}>Потреби</li>
+          <li className={styles.navItem} style={{cursor:"pointer"}} onClick={handleNeedsClick}>Потреби</li>
           <li className={styles.navItem}>FAQ</li>
           <li className={styles.navItem}>Про нас</li>
         </ul>

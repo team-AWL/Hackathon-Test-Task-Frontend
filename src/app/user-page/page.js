@@ -13,6 +13,7 @@ const UserPage = () => {
     const [editedUserbio, setEditedUserbio] = useState('');
     const [userImg, setUserImg] = useState('');
     const token_auth = useSearchParams().get('token')
+    const is_true = useSearchParams().get('reload')
     console.log(token_auth)
     useEffect(() => {
         if(token_auth){
@@ -21,13 +22,16 @@ const UserPage = () => {
         }
 
     }, []);
-    // useEffect(() => {
-    //     const token = localStorage.getItem('accessToken');
-    //     if (token) {
-    //         getCurrentUserData(token);
-    //     }
-    //
-    // }, []);
+    useEffect(() => {
+        const token = localStorage.getItem('accessToken');
+        if (token) {
+            getCurrentUserData(token);
+        }
+        if (is_true){
+            window.location.replace('/user-page')
+        }
+
+    }, []);
 
 
 
