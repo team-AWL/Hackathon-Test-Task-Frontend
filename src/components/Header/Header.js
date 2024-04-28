@@ -52,6 +52,11 @@ const Header = () => {
 
   };
 
+  const handleNeedsClick = () => {
+    router.push('/needs');
+
+  };
+
   return (
     <div className={styles.header}>
       <div className={styles.logo} onClick={handleLogoClick}>
@@ -60,7 +65,7 @@ const Header = () => {
       </div>
       <nav className={styles.nav}>
         <ul className={styles.navList}>
-          <li className={styles.navItem}>Потреби</li>
+          <li className={styles.navItem} onClick={handleNeedsClick}>Потреби</li>
           <li className={styles.navItem}>FAQ</li>
           <li className={styles.navItem}>Про нас</li>
         </ul>
