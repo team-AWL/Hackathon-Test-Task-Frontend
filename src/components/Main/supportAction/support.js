@@ -1,6 +1,8 @@
+'use client'
 import styles from './support.module.css';
 
 const SupportAction = () => {
+  const noAccessToken = !localStorage.getItem('accessToken')
   return (
     <div className={styles.supportActionContainer}>
       <div className={styles.contentWrapper}>
@@ -12,7 +14,8 @@ const SupportAction = () => {
           <p className={styles.supportActionText2}>Реєструйся та долучайся</p>
           <img src="./main-page/double-arrow.svg" alt="Double Arrow" className={styles.doubleArrowImage} />
         </div>
-        <button className={styles.registerButton}>Зареєструватись</button>
+        {noAccessToken  &&  <button className={styles.registerButton}>Зареєструватись</button>
+        }
       </div>
     </div>
   );

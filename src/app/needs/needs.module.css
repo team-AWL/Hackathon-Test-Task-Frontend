@@ -41,6 +41,7 @@
 }
 
 .main {
+    cursor: pointer;
     width: 70%;
     margin: 0 auto;
     margin-top: 5rem;
@@ -228,4 +229,19 @@
     margin: 0 auto;
     width: 70%;
     margin-top: 2rem;
+}
+.make_fundation{
+    height: 100px;
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.share{
+    height: fit-content;
+    padding: 10px 40px;
+    border-radius: 10px;
+    border: 2px solid  #212121;
+    color: red;
+    font-size: 24px;
 }

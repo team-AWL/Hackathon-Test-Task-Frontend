@@ -75,3 +75,36 @@ export async function updateUserInfo(userInfo) {
         throw error;
     }
 }
+
+export async function getNeedFundraising(token) {
+    const config = {
+        headers: {
+            Authorization: `${token}`
+        }
+    };
+
+    try {
+        const response = await axios.get(`${API_BASE_URL}/needs/get/activeFundraising`, config);
+        return response.data;
+    } catch (error) {
+        console.error('Error getting current user:', error);
+        throw error;
+    }
+}
+
+export async function getNeedHumanitariam(token) {
+    const config = {
+        headers: {
+            Authorization: `${token}`
+        }
+    };
+
+    try {
+        const response = await axios.get(`${API_BASE_URL}/needs/get/humanitarianAid`, config);
+        return response.data;
+    } catch (error) {
+        console.error('Error getting current user:', error);
+        throw error;
+    }
+}
+

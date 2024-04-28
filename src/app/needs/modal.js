@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './modal.module.css';
 import {registerFundraising, registerHumanitarianAid} from "@/util/api";
+import {router} from "next/client";
 
 const Modal = () => {
     const [selectedOption1, setSelectedOption1] = useState('');
@@ -86,6 +87,7 @@ const Modal = () => {
 
     return (
         <div className={styles.modal}>
+
             <h2 className={styles.title}>Бажаєш зареєструвати потребу?</h2>
             <p className={styles.dataInput}>Введи дані:</p>
             <div className={styles.selectWrapper}>

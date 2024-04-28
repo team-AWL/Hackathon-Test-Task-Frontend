@@ -12,7 +12,7 @@ export default function Registration({ history }) {
     const [formData, setFormData] = useState({
         email: "",
         firstName: "",
-        isHelper: true,
+        isHelper: !localStorage.getItem("wantToAskHelp"),
         lastName: "",
         password: ""
 
@@ -33,6 +33,7 @@ export default function Registration({ history }) {
         signup(formData)
             .then(response => {
                   router.push('/register/stage1/stage2')
+                console.log(response.data.isHelper)
                   return response.data
 
             })

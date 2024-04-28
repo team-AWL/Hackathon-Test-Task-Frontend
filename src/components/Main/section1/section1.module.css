@@ -50,6 +50,7 @@
   top: 7rem;
   margin-left: -13.5rem;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .endedText {
