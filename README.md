@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Допомога в дії
 
-## Getting Started
+## Онлайн-платформа для надання термінової допомоги
 
-First, run the development server:
+"Допомога в дії" - онлайн-платформа для координації та вирішення термінових потреб людей, які безпосередньо постраждали від війни або мають з нею прямий стосунок.
 
-```bash
+## Особливості
+
+- Окрема реєстрація для потребуючих та тих, хто бажає допомогти.
+- Авторизація через Google-віджет для підвищеної безпеки.
+- Можливість редагування особистої інформації у профілі.
+- Можливість реєстрації нових потреб від осіб, що їх потребують.
+- Сторінка 404.
+- Зміна паролю , якщо користувач забув його.
+
+# Дизайн
+
+Дизайн нашого проекту можна переглянути за цим [посиланням](https://www.figma.com/file/Ph16H8dXPvOoND4hTy1b1u/Untitled?type=design&node-id=0-1&mode=design&t=WUCwIBbXzmancWxn-0).
+
+## Технології
+
+"Допомога в дії" використовує декілька відкритих проектів для своєї роботи:
+
+- [Next.js](https://nextjs.org/) - Реактивний фреймворк для створення універсальних веб-додатків на основі React.
+- [Spring Boot](https://spring.io/projects/spring-boot) - Фреймворк для створення мікросервісних додатків на базі Java.
+- [MySQL](https://www.mysql.com/) - Відкрита реляційна система керування базами даних.
+- [Docker](https://www.docker.com/#build) - Платформа для розробки, розгортання та управління контейнеризованими додатками.
+
+## Встановлення
+
+Для запуску проекту слід дотримуватись інструкції, яка наведена нижче.
+
+### Фронт-енд
+
+"Допомога в дії" вимагає [Node.js](https://nodejs.org/) версії 18+ для запуску фронт-енд частини проекту.
+
+Клонуємо :
+```sh
+https://github.com/team-AWL/Hackathon-Test-Task-Frontend.git
+```
+Заходимо у папку проекту:
+```sh
+cd Hackathon-Test-Task-Frontend
+```
+Далі встановлюємо всі залежності:
+```sh
+npm install
+```
+Запускаємо проект:
+```sh
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Далі переходимо на сайт наш сайт по посиланню:
+```sh
+http://localhost:3000/
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+# Бек-енд
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Клонуємо :
+```sh
+git clone https://github.com/team-AWL/backend
+```
+Далі розгоритаємо докер-композицію:
+```sh
+docker-compose up --build
+```
+Наша серверна частина запустилась на :
+```sh
+http://localhost:8088/
+```
 
-## Learn More
+Для детальнішого розгляду документації API можете перегляду Swagger UI
+```sh
+http://localhost:8088/swagger-ui/#/
+```
 
-To learn more about Next.js, take a look at the following resources:
+# Зареєстування потреби
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Реєстрація облікового запису:
+1. Оберіть опцію: *Хочу зробити запит про потребу*.
+2. Зареєструйтеся, використовуючи зручний для вас метод.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Навігація до розділу Потреби:
+1. Перейдіть до розділу *Потреби* через меню.
 
-## Deploy on Vercel
+### Реєстрація потреби:
+1. Оберіть тип потреби: *Збір* або *Гуманітарна допомога*.
+2. Заповніть необхідну інформацію.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Перегляд результатів:
+1. Перегляньте на результати, вибравши вкладку вашої зареєстрованої потреби.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+## License
+
+MIT
+
+   [Next.js]: <https://nextjs.org/>
+   [Spring Boot]: <https://spring.io/projects/spring-boot>
+   [MySQL]: <https://www.mysql.com/>
+   [Docker]: <https://www.docker.com/#build>
+   [посиланням]: <https://www.figma.com/file/Ph16H8dXPvOoND4hTy1b1u/Untitled?type=design&node-id=0-1&mode=design&t=WUCwIBbXzmancWxn-0>
+
