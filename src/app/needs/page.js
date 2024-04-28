@@ -1,11 +1,11 @@
 "use client"
 
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from './modal';
 import styles from './needs.module.css';
-import {router} from "next/client";
-import {useRouter} from "next/navigation";
-import {getCurrentUser, getNeedFundraising, getNeedHumanitariam} from "@/util/api";
+import { router } from "next/client";
+import { useRouter } from "next/navigation";
+import { getCurrentUser, getNeedFundraising, getNeedHumanitariam } from "@/util/api";
 import ModalFound from "@/app/needs/modal_make_found";
 
 const Needs = () => {
@@ -56,7 +56,7 @@ const Needs = () => {
 
         fetchData();
     });
-    const router= useRouter();
+    const router = useRouter();
     const [showModal, setShowModal] = useState(false);
     const [showModalFound, setShowModalFound] = useState(false);
 
@@ -70,7 +70,7 @@ const Needs = () => {
     const handleContentChange = (contentNumber) => {
         setActiveContent(contentNumber);
     };
-    const handleCloseModal = () =>{
+    const handleCloseModal = () => {
         setShowModal(false)
     }
 
@@ -93,10 +93,10 @@ const Needs = () => {
                     </p>
                     {isHelper ?
                         null
-                     : ( <button className={styles.registerButton} onClick={toggleModal}>
-                        Зареєструвати потребу
-                    </button>)}
-                    {showModal && <Modal handleCloseModal = {handleCloseModal}/>} {/* Render the modal component if showModal is true */}
+                        : (<button className={styles.registerButton} onClick={toggleModal}>
+                            Зареєструвати потребу
+                        </button>)}
+                    {showModal && <Modal handleCloseModal={handleCloseModal} />} {/* Render the modal component if showModal is true */}
                 </div>
                 <div className={styles.rightSection}>
                     <img src="/flag.svg" alt="Flag" className={styles.flagImage} />
@@ -159,8 +159,8 @@ const Needs = () => {
                                         <div className={styles.rightSection1}>
                                             <img src="/main-page/extraHelp.svg" alt="Extra" className={styles.extraImage} />
 
-                                            <button onClick={()=>setShowModalFound(true)} className={styles.registerButton}>Зробити внесок</button>
-                                            {showModalFound && <ModalFound data={fundraisingData[index]}/>}
+                                            <button onClick={() => setShowModalFound(true)} className={styles.registerButton}>Зробити внесок</button>
+                                            {showModalFound && <ModalFound data={fundraisingData[index]} />}
                                         </div>
                                     </div>
                                 </div>

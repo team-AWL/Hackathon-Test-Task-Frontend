@@ -1,8 +1,8 @@
 import styles from "@/app/needs/modal.module.css";
 
-import React, {useState} from "react";
+import React, { useState } from "react";
 
-const ModalFound = ({data}) =>{
+const ModalFound = ({ data }) => {
 
     const [activeContent, setActiveContent] = useState(1);
 
@@ -23,7 +23,7 @@ const ModalFound = ({data}) =>{
                     className={activeContent === 2 ? styles.activeButton : styles.button}
                     onClick={() => handleContentChange(2)}
                 >
-                   Реквізити
+                    Реквізити
                 </button>
 
             </div>

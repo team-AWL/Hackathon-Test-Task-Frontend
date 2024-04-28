@@ -1,12 +1,12 @@
 'use client'
 import Link from "next/link";
-import {useState} from "react";
+import { useState } from "react";
 import '../register/auth.css'
-import {login} from "@/util/api";
-import {useRouter} from "next/navigation";
+import { login } from "@/util/api";
+import { useRouter } from "next/navigation";
 
-export default function Forget(){
-    const router= useRouter()
+export default function Forget() {
+    const router = useRouter()
     const [formData, setFormData] = useState({
         email: "",
         password: ""
@@ -37,7 +37,7 @@ export default function Forget(){
     //         });
     // };
 
-    return(
+    return (
         <div className='wrapper'>
             <div className='registration_container'>
                 <div className='registration_table'>
@@ -45,7 +45,7 @@ export default function Forget(){
                     <p className='under_main_text'>Забули пароль?</p>
                     <p className='text_about_forget'>Вам потрібно ввести електронну адресу, пов'язану з його обліковим записом</p>
                     <form
-                        // onSubmit={handleSubmit}
+                    // onSubmit={handleSubmit}
                     >
                         <div className='inputs_container'>
                             <div className='inputs_table'>
@@ -58,7 +58,7 @@ export default function Forget(){
                                     onChange={handleInputChange}
                                     required
                                 />
-                               </div>
+                            </div>
                         </div>
                         <div className='enter'>
                             {/*<Link href='/'>Повернутись на головну</Link>*/}

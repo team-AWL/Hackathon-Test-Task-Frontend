@@ -4,7 +4,7 @@
   margin: 0;
 }
 
-body{
+body {
   background-color: #e6e6e4
 }
 
@@ -13,7 +13,7 @@ a {
   text-decoration: none;
 }
 
-button, 
+button,
 input {
-    font-family: inherit;
+  font-family: inherit;
 }

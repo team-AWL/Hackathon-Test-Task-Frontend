@@ -230,18 +230,20 @@
     width: 70%;
     margin-top: 2rem;
 }
-.make_fundation{
+
+.make_fundation {
     height: 100px;
     width: 500px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.share{
+
+.share {
     height: fit-content;
     padding: 10px 40px;
     border-radius: 10px;
-    border: 2px solid  #212121;
+    border: 2px solid #212121;
     color: red;
     font-size: 24px;
 }
