@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
 }
+
 .registration_container{
     display: flex;
     justify-content: center;
@@ -12,34 +13,42 @@
     align-items: center;
     width: 70%;
     height: auto;
+    margin-bottom: 5rem;
 }
+
 .registration_table{
     gap: 20px;
     height:auto;
     display: flex;
     flex-direction: column;
 }
+
 .continue{
     background: none;
     border: none;
     font-family: inherit;
     font-size: 1.1em;
 }
+
 .main_text{
     font-size: 40px;
 }
+
 .under_main_text{
     font-size: 36px;
     text-align: center;
 }
+
 .text_about_forget {
     text-align: center;
     font-size: 13px;
     font-weight: bold;
 }
+
 .email-icon{
     text-align: center;
 }
+
 .forget_password_button{
     color: #BA1E1E;
     text-align: right;
@@ -47,17 +56,21 @@
     font-size: 13px;
     font-weight: bold;
 }
+
 .text_in_sent_email_again{
     text-align: center;
     font-size: 13px;
 }
+
 .label_under_login{
     font-size: 16px;
     font-weight: bold;
 }
-.registration_table >h2{
+
+.regisration_table >h2{
     text-align: center;
 }
+
 .registration_table >button{
     background: transparent;
     border: 1px solid black;
@@ -74,15 +87,18 @@
     color: white;
     border: 1px solid white;
 }
+
 .registration_table >button.selected{
     background: black;
     color: white;
     border: 1px solid white;
 }
+
 .stages_container{
     display: flex;
     justify-content: space-around;
 }
+
 .stage{
     border-radius: 50%;
     border: 1px solid black;
@@ -93,6 +109,7 @@
     justify-content: center;
 
 }
+
 .stage.one{
     background: rgba(186, 30, 30, 0.74);
 }
@@ -105,42 +122,50 @@
     width: 100%;
     justify-content: space-between;
 }
+
 .inputs_container{
     display: flex;
     width: 100%;
     justify-content: center;
-
 }
+
 .inputs_table{
     display: flex;
     flex-direction: column;
     width: 70%;
     gap: 10px;
-
+    font-size: 22px;
 }
+
 .inputs_table > h2{
     padding: 40px 0px 20px 0px;
     text-align: center;
 }
+
 .image{
     display: flex;
     justify-content: center;
 }
+
 .arrow{
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .inputs_table > input{
     border-top: black;
     border-radius: 5px;
     padding: 5px 10px;
+    font-size: 20px;
 }
+
 .enter{
     display: flex;
     margin: 20px 0;
     justify-content: center;
 }
+
 .enter > button{
     color: white;
     border-radius: 15px;
