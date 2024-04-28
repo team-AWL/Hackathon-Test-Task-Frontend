@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react';
-import {ACCESS_TOKEN} from "@/constants";
+import {ACCESS_TOKEN, GOOGLE_AUTH_URL} from "@/constants";
 
 import Link from "next/link";
 import { signup } from '@/util/api'; // Import your signup function
@@ -89,9 +89,9 @@ export default function Registration({ history }) {
                                         onChange={handleInputChange}
                                         required
                                     />
-                                    <button type="button" className="login-with-google-btn" >
+                                    <a style={{cursor:"pointer"}} href={GOOGLE_AUTH_URL} className="login-with-google-btn" >
                                         Швидка авторизація
-                                    </button>
+                                    </a>
                                 </div>
 
                             </div>
