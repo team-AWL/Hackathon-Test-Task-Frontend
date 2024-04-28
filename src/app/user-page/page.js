@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import styles from './needs.module.css';
+import {useRouter,useSearchParams} from "next/navigation";
 import { getCurrentUser, updateUserInfo } from '@/util/api';
 
 const UserPage = () => {
@@ -11,14 +12,26 @@ const UserPage = () => {
     const [editedUsername, setEditedUsername] = useState('');
     const [editedUserbio, setEditedUserbio] = useState('');
     const [userImg, setUserImg] = useState('');
+    const token_auth = useSearchParams().get('token')
+    console.log(token_auth)
 
     useEffect(() => {
-        const token = localStorage.getItem('accessToken');
-        if (token) {
-            getCurrentUserData(token);
+        if(token_auth){
+            localStorage.setItem('accessToken',token_auth)
+            const user = getCurrentUserData(token_auth)
+            console.log(user)
         }
 
     }, []);
+    // useEffect(() => {
+    //     const token = localStorage.getItem('accessToken');
+    //     if (token) {
+    //         getCurrentUserData(token);
+    //     }
+    //
+    // }, []);
+
+
 
     const getCurrentUserData = async (token) => {
         try {
