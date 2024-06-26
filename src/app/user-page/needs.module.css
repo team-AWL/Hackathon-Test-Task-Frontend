@@ -92,3 +92,9 @@
 .avatar {
     height: 200px;
 }
+
+.userpageline {
+    border-bottom: 1px solid black;
+    width: 92%;
+    margin: 0 auto;
+}

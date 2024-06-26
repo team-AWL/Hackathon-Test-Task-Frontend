@@ -114,6 +114,7 @@ const UserPage = () => {
                     )}
                 </div>
             </div>
+            <div className={styles.userpageline}></div>
         </div>
     );
 };
