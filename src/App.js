@@ -13,11 +13,12 @@ import Registration2 from './components/Register/stage2/page';
 import UserPage from './components/UserPage/page';
 import Header from './extraComponents/Header/Header';
 import Footer from './extraComponents/Footer/Footer';
+import CustomScrollbar from '../src/util/custom-scrollbar';
 
 function App() {
   return (
     <Router>
-      <div>
+      <CustomScrollbar>
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -32,7 +33,7 @@ function App() {
           <Route path="/user-page" element={<UserPage />} />
         </Routes>
         <Footer />
-      </div>
+      </CustomScrollbar>
     </Router>
   );
 }

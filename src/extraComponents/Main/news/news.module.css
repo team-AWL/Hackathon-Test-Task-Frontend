@@ -17,7 +17,11 @@
 }
 
 .allNewsLink {
-    font-size: 24px;
+    font-size: 30px;
+}
+
+.allNewsLink.dark {
+    color: #BF4545;
 }
 
 .newsSection {
@@ -69,6 +73,13 @@
     left: 0;
 }
 
+.textBlock1.dark,
+.textBlock2.dark {
+    background-color: #212121;
+    color: #E6E6E4;
+    border: 2px solid #E6E6E4;
+}
+
 .learnMoreBox,
 .learnMoreBox1 {
     position: absolute;
@@ -77,6 +88,11 @@
     border-bottom: 2px solid #000;
     font-weight: 700;
     white-space: nowrap;
+}
+
+.learnMoreBox.dark,
+.learnMoreBox1.dark {
+    border-color: #E6E6E4;
 }
 
 .learnMoreBox {
@@ -93,4 +109,9 @@
 .learnMoreText1 {
     font-size: 24px;
     color: #212121;
+}
+
+.learnMoreText.dark,
+.learnMoreText1.dark {
+    color: #E6E6E4;
 }

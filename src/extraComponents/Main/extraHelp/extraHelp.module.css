@@ -20,6 +20,10 @@
     border-radius: 10px;
 }
 
+.item.dark {
+    border-bottom: 1px solid #E6E6E4;
+}
+
 .itemText {
     flex-grow: 1;
     font-size: 24px;
@@ -65,11 +69,19 @@
     margin-top: 3rem;
 }
 
+.learnMore.dark {
+    border: 2px solid #BF4545;
+}
+
 .learnMoreText {
     font-size: 24px;
     margin-right: 1rem;
     color: red;
     padding-right: 0.5rem;
+}
+
+.learnMoreText.dark {
+    color: #E6E6E4;
 }
 
 .arrowIcon {

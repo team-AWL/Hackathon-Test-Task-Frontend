@@ -53,3 +53,8 @@
   color: white;
   border: none;
 }
+
+.registerButton.dark {
+  color:#212121;
+  background-color: #E6E6E4;
+}

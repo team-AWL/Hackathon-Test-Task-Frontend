@@ -1,7 +1,10 @@
 import styles from './support.module.css';
+import { useSelector } from 'react-redux';
 
 const SupportAction = () => {
   const noAccessToken = !localStorage.getItem('accessToken')
+  const isDarkMode = useSelector(state => state.isDarkMode);
+  
   return (
     <div className={styles.supportActionContainer}>
       <div className={styles.contentWrapper}>
@@ -11,9 +14,9 @@ const SupportAction = () => {
         </div>
         <div className={styles.wrapper2}>
           <p className={styles.supportActionText2}>Реєструйся та долучайся</p>
-          <img src="./main-page/double-arrow.svg" alt="Double Arrow" className={styles.doubleArrowImage} />
+          <img src={isDarkMode ? '/main-page/double-arrow-dark.svg' : '/main-page/double-arrow.svg'} alt="Double Arrow" className={styles.doubleArrowImage} />
         </div>
-        {noAccessToken && <button className={styles.registerButton}>Зареєструватись</button>
+        {noAccessToken && <button className={`${styles.registerButton} ${isDarkMode ? styles.dark : ''}`}>Зареєструватись</button>
         }
       </div>
     </div>

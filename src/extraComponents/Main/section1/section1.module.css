@@ -44,7 +44,7 @@
   padding: 10px 18px 12px 18px;
   margin-top: 3rem;
   background-color: #3F3F3F;
-  color: white;
+  color: #E6E6E4;
   border: none;
   position: absolute;
   top: 7rem;
@@ -53,9 +53,21 @@
   cursor: pointer;
 }
 
+.registerButton.dark {
+  color:#212121;
+  background-color: #E6E6E4;
+}
 .endedText {
   font-size: 25px;
   display: flex;
   justify-content: flex-end;
   margin-top: -4rem;
+}
+
+.v {
+  color: #3F3F3F;
+}
+
+.v.dark {
+  color: #D4D4D4;
 }

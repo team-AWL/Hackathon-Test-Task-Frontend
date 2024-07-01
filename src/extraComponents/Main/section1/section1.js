@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import styles from './section1.module.css';
+import { useSelector } from 'react-redux';
 
 const Section1 = () => {
   const navigate = useNavigate();
+  const isDarkMode = useSelector(state => state.isDarkMode);
 
   return (
     <div className={styles.section1}>
@@ -20,8 +22,8 @@ const Section1 = () => {
           <img src="/main-page/section12.svg" alt="Section 12 Image" className={styles.image} />
         </div>
         <div className={styles.textBesideImage}>
-          <span style={{ color: 'black' }}>В</span> ДІЇ
-          <button onClick={() => navigate('/needs')} className={styles.registerButton}>
+          <span className={`${styles.v} ${isDarkMode ? styles.dark : ''}`}>В</span> ДІЇ
+          <button onClick={() => navigate('/needs')} className={`${styles.registerButton} ${isDarkMode ? styles.dark : ''}`}>
             Перейти до потреб
           </button>
         </div>
