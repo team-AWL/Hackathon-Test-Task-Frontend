@@ -13,3 +13,19 @@ root.render(
     </React.StrictMode>
   </Provider>
 );
+
+const updateBodyClass = (isDarkMode) => {
+  const body = document.querySelector('body');
+  if (isDarkMode) {
+    body.classList.add('dark');
+  } else {
+    body.classList.remove('dark');
+  }
+};
+
+store.subscribe(() => {
+  const state = store.getState();
+  updateBodyClass(state.isDarkMode);
+});
+
+updateBodyClass(store.getState().isDarkMode);

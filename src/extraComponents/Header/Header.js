@@ -64,7 +64,7 @@ const Header = () => {
   return (
     <div className={`${styles.header} ${isDarkMode ? styles.dark : ''}`}>
       <div className={styles.logo} onClick={handleLogoClick}>
-        <img src="/logo.svg" alt="Логотип" />
+        <img src={isDarkMode ? '/logo-dark.svg' : '/logo.svg'} alt="Логотип" />
         <div className={styles.logoText}> Допомога в дії </div>
       </div>
       <nav className={styles.nav}>
@@ -90,8 +90,8 @@ const Header = () => {
         <button onClick={handleLogOut} className={styles.loginButton}>Вийти</button>
       ) : (
         <>
-          <button onClick={handleRedirectRegister} className={styles.registerButton}>Зареєструватись</button>
-          <button onClick={handleRedirectLogin} className={styles.loginButton}>Увійти</button>
+          <button onClick={handleRedirectRegister} className={`${styles.registerButton} ${isDarkMode ? styles.dark : ''}`}>Зареєструватись</button>
+          <button onClick={handleRedirectLogin} className={`${styles.loginButton} ${isDarkMode ? styles.dark : ''}`}>Увійти</button>
         </>
       )}
     </div>

@@ -11,7 +11,7 @@
 }
 
 .header.dark {
-  background-color: black;
+  background-color: #212121;
 }
 
 
@@ -47,7 +47,7 @@
     height: 40px;
     border-radius: 50%;
     margin-right: 10px;
-    background-image: url('../../../public/person1.svg'); /* Path to your default image */
+    background-image: url('../../../public/person1.svg');
     background-size: cover;
     background-position: center;
 }
@@ -67,9 +67,20 @@
     background-color: #3F3F3F;
 }
 
+.registerButton.dark {
+  color:#3F3F3F;
+  background-color: #D4D4D4;
+}
+
 .loginButton {
     background-color: transparent;
     color: #3F3F3F;
+}
+
+.loginButton.dark {
+  background-color: #212121;
+  color: #D4D4D4;
+  border: 1px solid #D4D4D4;
 }
 
 .logo {
