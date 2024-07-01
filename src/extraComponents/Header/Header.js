@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import styles from './header.module.css';
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleTheme } from '../../store';
 import { getCurrentUser } from '../../util/api';
 
 const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const isDarkMode = useSelector(state => state.isDarkMode);
   const [userAvatar, setUserAvatar] = useState('/person2.svg');
   const [hasAccessToken, setHasAccessToken] = useState(!!localStorage.getItem('accessToken'));
 
@@ -53,8 +57,12 @@ const Header = () => {
     navigate('/needs');
   };
 
+  const handleSunClick = () => {
+    dispatch(toggleTheme());
+  };
+
   return (
-    <div className={styles.header}>
+    <div className={`${styles.header} ${isDarkMode ? styles.dark : ''}`}>
       <div className={styles.logo} onClick={handleLogoClick}>
         <img src="/logo.svg" alt="Логотип" />
         <div className={styles.logoText}> Допомога в дії </div>
@@ -71,7 +79,12 @@ const Header = () => {
           <img src={userAvatar} alt="User Avatar" className={styles.avatar} />
         </div>
       )}
-      <img src="/sun-light.svg" alt="Sun Light" className={styles.sunLight} />
+      <img
+        src={isDarkMode ? '/moon.svg' : '/sun-light.svg'}
+        alt={isDarkMode ? 'Moon Light' : 'Sun Light'}
+        className={styles.sunLight}
+        onClick={handleSunClick}
+      />
       <span className={styles.country}>UA</span>
       {hasAccessToken ? (
         <button onClick={handleLogOut} className={styles.loginButton}>Вийти</button>

@@ -10,6 +10,11 @@
     margin: 1.5rem auto;
 }
 
+.header.dark {
+  background-color: black;
+}
+
+
 .navList {
     list-style: none;
     display: flex;
