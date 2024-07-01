@@ -1,6 +1,6 @@
 import Section1 from '../../extraComponents/Main/section1/section1';
-import HelpUkraine from '.../../extraComponents/Main/helpUkraine/helpUkraine';
-import SupportAction from '../../extraComponents/Main/SupportAction/support';
+import HelpUkraine from '../../extraComponents/Main/helpUkraine/helpUkraine';
+import SupportAction from '../../extraComponents/Main/supportAction/support';
 import News  from '../../extraComponents/Main/news/news';
 import ExtraHelp from '../../extraComponents/Main/extraHelp/extraHelp';
 

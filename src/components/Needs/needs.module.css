@@ -167,7 +167,7 @@
     padding: 15px 0 15px 15px;
     margin-bottom: 10rem;
     background-color: #e6e6e4;
-    background-image: url('/loop.svg');
+    background-image: url('/public/loop.svg');
     background-repeat: no-repeat;
     background-position: calc(100% - 10px) center;
 }

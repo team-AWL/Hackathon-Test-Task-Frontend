@@ -1,5 +1,5 @@
 import { useState } from "react";
-import '../../register/auth.css'
+import '../../Register/auth.css'
 import { login } from "../../../util/api";
 import { useRouter } from "react";
 

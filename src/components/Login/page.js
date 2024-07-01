@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import '../register/auth.css';
-import { login } from "@/util/api";
+import '../Register/auth.css';
+import { login } from "../../util/api";
 import { GOOGLE_AUTH_URL } from "../../constants/index";
 
 export default function Login() {

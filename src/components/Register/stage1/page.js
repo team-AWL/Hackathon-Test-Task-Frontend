@@ -27,7 +27,7 @@ export default function Registration1() {
 
         signup(formData)
             .then(response => {
-                navigate('/register/stage1/stage2');
+                navigate('/register/stage2');
                 console.log(response.data.isHelper);
                 return response.data;
             })

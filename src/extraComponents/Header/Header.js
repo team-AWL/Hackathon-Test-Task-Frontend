@@ -1,34 +1,35 @@
-import {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './header.module.css';
-import { useRouter } from "next/navigation";
-import {getCurrentUser} from "../../util/api";
-
+import { useNavigate } from 'react-router-dom';
+import { getCurrentUser } from '../../util/api';
 
 const Header = () => {
-  const router = useRouter();
+  const navigate = useNavigate();
   const [userAvatar, setUserAvatar] = useState('/person2.svg');
-  const [hasAccessToken,setHasAccessToken] =  useState(!!localStorage.getItem('accessToken'));
+  const [hasAccessToken, setHasAccessToken] = useState(!!localStorage.getItem('accessToken'));
+
   const handleLogOut = () => {
     const confirmLogout = window.confirm('Ви впевнені, що хочете вийти?');
     if (confirmLogout) {
       localStorage.removeItem('accessToken');
-      setHasAccessToken(false)
-      router.push("/login")
+      setHasAccessToken(false);
+      navigate("/login");
     }
   };
-  const handleRedirectRegister = () =>{
-    router.push('/register')
 
-  }
-  const handleRedirectLogin = () =>{
-    router.push('/login')
-  }
+  const handleRedirectRegister = () => {
+    navigate('/register');
+  };
+
+  const handleRedirectLogin = () => {
+    navigate('/login');
+  };
 
   useEffect(() => {
     if (hasAccessToken) {
       const token = localStorage.getItem('accessToken');
       if (token) {
-        getCurrentUserData(token).then(r => console.log(r));
+        getCurrentUserData(token);
       }
     }
   }, [hasAccessToken]);
@@ -36,24 +37,20 @@ const Header = () => {
   const getCurrentUserData = async (token) => {
     try {
       const userData = await getCurrentUser(token);
-      console.log(userData.imageUrl)
-      if(!(userData.imageUrl === null)){
+      if (userData.imageUrl !== null) {
         setUserAvatar(userData.imageUrl);
       }
-
     } catch (error) {
       console.error('Error getting current user data:', error);
     }
   };
 
   const handleLogoClick = () => {
-    router.push('/');
-
+    navigate('/');
   };
 
   const handleNeedsClick = () => {
-    router.push('/needs');
-
+    navigate('/needs');
   };
 
   return (
@@ -64,26 +61,25 @@ const Header = () => {
       </div>
       <nav className={styles.nav}>
         <ul className={styles.navList}>
-          <li className={styles.navItem} style={{cursor:"pointer"}} onClick={handleNeedsClick}>Потреби</li>
+          <li className={styles.navItem} style={{ cursor: "pointer" }} onClick={handleNeedsClick}>Потреби</li>
           <li className={styles.navItem}>FAQ</li>
           <li className={styles.navItem}>Про нас</li>
         </ul>
       </nav>
       {hasAccessToken && userAvatar && (
-          <div onClick={()=>router.push('/user-page')} className={styles.userProfile}>
-            <img src={userAvatar} alt="User Avatar" className={styles.avatar} />
-          </div>
+        <div onClick={() => navigate('/user-page')} className={styles.userProfile}>
+          <img src={userAvatar} alt="User Avatar" className={styles.avatar} />
+        </div>
       )}
       <img src="/sun-light.svg" alt="Sun Light" className={styles.sunLight} />
       <span className={styles.country}>UA</span>
       {hasAccessToken ? (
-          <button onClick={handleLogOut} className={styles.loginButton}>Вийти</button>
-
+        <button onClick={handleLogOut} className={styles.loginButton}>Вийти</button>
       ) : (
-          <>
-            <button onClick={handleRedirectRegister} className={styles.registerButton}>Зареєструватись</button>
-            <button onClick={handleRedirectLogin} className={styles.loginButton}>Увійти</button>
-          </>
+        <>
+          <button onClick={handleRedirectRegister} className={styles.registerButton}>Зареєструватись</button>
+          <button onClick={handleRedirectLogin} className={styles.loginButton}>Увійти</button>
+        </>
       )}
     </div>
   );
