@@ -1,4 +1,4 @@
-import styles from "@/app/needs/modal.module.css";
+import styles from "./modal.module.css";
 
 import React, { useState } from "react";
 

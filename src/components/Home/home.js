@@ -1,8 +1,8 @@
-import Section1 from '../components/Main/section1/section1';
-import HelpUkraine from '../components/Main/helpUkraine/helpUkraine';
-import SupportAction from '../components/Main/SupportAction/support';
-import News  from '../components/Main/news/news';
-import ExtraHelp from '../components/Main/extraHelp/extraHelp';
+import Section1 from '../../extraComponents/Main/section1/section1';
+import HelpUkraine from '.../../extraComponents/Main/helpUkraine/helpUkraine';
+import SupportAction from '../../extraComponents/Main/SupportAction/support';
+import News  from '../../extraComponents/Main/news/news';
+import ExtraHelp from '../../extraComponents/Main/extraHelp/extraHelp';
 
 export default function Home() {
   return (

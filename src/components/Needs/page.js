@@ -1,17 +1,15 @@
-"use client"
-
 import React, { useEffect, useState } from 'react';
 import Modal from './modal';
 import styles from './needs.module.css';
-import { router } from "next/client";
-import { useRouter } from "next/navigation";
-import { getCurrentUser, getNeedFundraising, getNeedHumanitariam } from "@/util/api";
-import ModalFound from "@/app/needs/modal_make_found";
+import { useNavigate } from 'react-router-dom';
+import { getCurrentUser, getNeedFundraising, getNeedHumanitariam } from "../../util/api";
+import ModalFound from "./modal_make_found";
 
 const Needs = () => {
     const [fundraisingData, setFundraisingData] = useState([]);
     const [dataHumanitarian, setHumanitarianData] = useState([]);
-
+    const [isHelper, setIsHelper] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -27,7 +25,6 @@ const Needs = () => {
 
                     if (dataHumanitarian && Array.isArray(dataHumanitarian)) {
                         setHumanitarianData(dataHumanitarian);
-
                     }
                 } catch (error) {
                     console.error('Error fetching data:', error);
@@ -37,13 +34,11 @@ const Needs = () => {
 
         fetchData();
     }, []);
-    // const [isHelper, setIsHelper] = useState(false);
-    const isHelper = !localStorage.getItem('wantToAskHelp')
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const token = localStorage.getItem('token');
+                const token = localStorage.getItem('accessToken');
                 if (token) {
                     const userData = await getCurrentUser(token);
                     console.log(userData);
@@ -55,11 +50,10 @@ const Needs = () => {
         };
 
         fetchData();
-    });
-    const router = useRouter();
+    }, []);
+
     const [showModal, setShowModal] = useState(false);
     const [showModalFound, setShowModalFound] = useState(false);
-
     const [activeContent, setActiveContent] = useState(1);
 
 
@@ -70,15 +64,16 @@ const Needs = () => {
     const handleContentChange = (contentNumber) => {
         setActiveContent(contentNumber);
     };
+
     const handleCloseModal = () => {
-        setShowModal(false)
-    }
+        setShowModal(false);
+    };
 
     return (
         <>
             <p
                 onClick={() => {
-                    router.push('/');
+                    navigate('/');
                 }}
                 className={styles.main}
             >
@@ -188,7 +183,6 @@ const Needs = () => {
                                         </div>
                                         <div className={styles.rightSection1}>
                                             <img src="/main-page/extraHelp.svg" alt="Extra" className={styles.extraImage} />
-
                                         </div>
                                     </div>
                                 </div>
@@ -204,10 +198,7 @@ const Needs = () => {
                                     </div>
                                     <div className={styles.quote}>
                                         <span className={styles.quoteText}>"</span>
-                                        <p className={styles.quoteContent}>психолог з великим досвідом та глибоким
-                                            розумінням людської психіки. Я відомий своєю ефективністю в роботі з тривожністю,
-                                            депресією, стресом та відносинами, та завжди готовий допомогти своїм клієнтам
-                                            знайти внутрішню гармонію та розвити стратегії самовдосконалення.</p>
+                                        <p className={styles.quoteContent}>психолог з великим досвідом та глибоким розумінням людської психіки. Я відомий своєю ефективністю в роботі з тривожністю, депресією, стресом та відносинами, та завжди готовий допомогти своїм клієнтам знайти внутрішню гармонію та розвити стратегії самовдосконалення.</p>
                                     </div>
                                 </div>
                                 <div className={styles.rightSection1}>
@@ -223,4 +214,5 @@ const Needs = () => {
         </>
     );
 };
+
 export default Needs;

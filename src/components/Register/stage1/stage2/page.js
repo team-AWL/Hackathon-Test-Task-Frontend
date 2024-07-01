@@ -1,9 +1,8 @@
-import '../../auth.css'
-import '../../../globals.css'
-import Link from "next/link";
-import Image from "next/image";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import '../../auth.css';
 
-export default function Registration() {
+export default function Registration2() {
     return (
         <div className='wrapper'>
             <div className='registration_container'>
@@ -28,8 +27,9 @@ export default function Registration() {
                                     </g>
                                 </svg>
                             </div>
-                            <p style={{ textAlign: 'center', fontSize: '1.2em' }}><Link style={{ color: 'blue' }} href='/login'>Увійдіть</Link>, щоб продовжити</p>
-
+                            <p style={{ textAlign: 'center', fontSize: '1.2em' }}>
+                                <Link style={{ color: 'blue' }} to='/login'>Увійдіть</Link>, щоб продовжити
+                            </p>
                         </div>
                     </div>
                 </div>

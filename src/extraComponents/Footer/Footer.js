@@ -1,6 +1,5 @@
-"use client"
 import styles from './footer.module.css';
-import {login, subscribeToNewNeeds} from "@/util/api";
+import {login, subscribeToNewNeeds} from "../../util/api";
 import {useState} from "react";
 
 const Footer = () => {

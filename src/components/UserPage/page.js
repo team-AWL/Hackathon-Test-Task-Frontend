@@ -1,8 +1,7 @@
-"use client"
 import React, { useEffect, useState } from 'react';
 import styles from './needs.module.css';
-import {useRouter,useSearchParams} from "next/navigation";
-import { getCurrentUser, updateUserInfo } from '@/util/api';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { getCurrentUser, updateUserInfo } from '../../util/api';
 
 const UserPage = () => {
     const [usermail, setUsermail] = useState('');
@@ -12,13 +11,15 @@ const UserPage = () => {
     const [editedUsername, setEditedUsername] = useState('');
     const [editedUserbio, setEditedUserbio] = useState('');
     const [userImg, setUserImg] = useState('');
-    const token_auth = useSearchParams().get('token')
-    const is_true = useSearchParams().get('reload')
-    console.log(token_auth)
+    const navigate = useNavigate();
+    const location = useLocation();
+    const token_auth = new URLSearchParams(location.search).get('token');
+    const is_true = new URLSearchParams(location.search).get('reload');
+
     useEffect(() => {
-        if(token_auth){
-            localStorage.setItem('accessToken',token_auth)
-            const user = getCurrentUserData(token_auth)
+        if (token_auth) {
+            localStorage.setItem('accessToken', token_auth);
+            getCurrentUserData(token_auth);
         }
 
     }, []);
@@ -27,8 +28,8 @@ const UserPage = () => {
         if (token) {
             getCurrentUserData(token);
         }
-        if (is_true){
-            window.location.replace('/user-page')
+        if (is_true) {
+            navigate('/user-page');
         }
 
     }, []);
@@ -38,7 +39,7 @@ const UserPage = () => {
     const getCurrentUserData = async (token) => {
         try {
             const userData = await getCurrentUser(token);
-            setUserImg(userData.imageUrl)
+            setUserImg(userData.imageUrl);
             setUsermail(userData.email);
             setUserbio(userData.bio);
             setUsername(userData.name);
@@ -99,7 +100,6 @@ const UserPage = () => {
                             </div>
                             <button className={styles.saveButton} onClick={handleSaveClick}>Зберегти</button>
                         </div>
-
                     ) : (
                         <div>
                             <p className={styles.username}>{username}</p>

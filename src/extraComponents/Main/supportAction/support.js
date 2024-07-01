@@ -1,4 +1,3 @@
-'use client'
 import styles from './support.module.css';
 
 const SupportAction = () => {

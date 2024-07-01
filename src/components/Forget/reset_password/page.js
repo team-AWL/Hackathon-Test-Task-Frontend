@@ -1,17 +1,17 @@
-import Link from "next/link";
 import { useEffect, useState } from "react";
-import '../../register/auth.css'
+import { useNavigate, useSearchParams } from "react-router-dom";
+import '../../register/auth.css';
 import { login, resetPassword } from "../../../util/api";
-import { useRouter, useSearchParams } from "next/navigation";
 
 export default function ResetPassword() {
-    const router = useRouter()
+    const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    const reset_token = searchParams.get('token');
     const [formData, setFormData] = useState({
         password: "",
         confirm_password: ""
-
     });
-    const reset_token = useSearchParams().get('token')
+
     const handleInputChange = event => {
         const { name, value } = event.target;
         setFormData(prevState => ({
@@ -23,14 +23,12 @@ export default function ResetPassword() {
     const handleSubmit = event => {
         event.preventDefault();
         if (formData.password === formData.confirm_password) {
-            var body = { password: formData.password, token: reset_token }
-            console.log(body.token)
+            const body = { password: formData.password, token: reset_token };
             resetPassword(body).then(response => {
-                router.push("/login")
-            })
-        }
-        else {
-            //TODO: Implement error
+                navigate("/login");
+            });
+        } else {
+            // TODO: Implement error handling for mismatched passwords
         }
     };
 

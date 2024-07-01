@@ -1,8 +1,6 @@
-'use client'
-import Link from "next/link";
 import { useState } from "react";
 import '../register/auth.css'
-import { login } from "@/util/api";
+import { login } from "../../util/api";
 import { useRouter } from "next/navigation";
 
 export default function Forget() {

@@ -1,18 +1,16 @@
-'use client'
-import Link from "next/link";
 import { useState } from "react";
-import '../register/auth.css'
-import {login} from "@/util/api";
-import {useRouter} from "next/navigation";
-import {GOOGLE_AUTH_URL} from "@/constants";
+import { Link, useNavigate } from "react-router-dom";
+import '../register/auth.css';
+import { login } from "@/util/api";
+import { GOOGLE_AUTH_URL } from "../../constants/index";
 
 export default function Login() {
-    const router = useRouter()
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         email: "",
         password: ""
-
     });
+
     const handleInputChange = event => {
         const { name, value } = event.target;
         setFormData(prevState => ({
@@ -27,15 +25,13 @@ export default function Login() {
         login(formData)
             .then(response => {
                 if (response.token) {
-                    localStorage.setItem('accessToken', response.token)
-                    window.location.replace('/')
-                    router.push('/')
+                    localStorage.setItem('accessToken', response.token);
+                    window.location.replace('/');
+                    navigate('/');
                 }
             })
-
-
             .catch(error => {
-                console.log(error)
+                console.log(error);
             });
     };
 
@@ -44,7 +40,7 @@ export default function Login() {
             <div className='registration_container'>
                 <div className='registration_table'>
                     <h2 className='main_text'>Вхід</h2>
-                    <p className='under_main_text'>Раді Вас знову вітати !</p>
+                    <p className='under_main_text'>Раді Вас знову вітати!</p>
                     <form onSubmit={handleSubmit}>
                         <div className='inputs_container'>
                             <div className='inputs_table'>
@@ -66,22 +62,24 @@ export default function Login() {
                                     onChange={handleInputChange}
                                     required
                                 />
-                                <p className='forget_password_button'><Link href='/forget'>Забули пароль?</Link> </p>
-
-                                <a style={{cursor:"pointer"}} href={GOOGLE_AUTH_URL} className="login-with-google-btn" >
+                                <p className='forget_password_button'>
+                                    <Link to='/forget'>Забули пароль?</Link>
+                                </p>
+                                <a style={{ cursor: "pointer" }} href={GOOGLE_AUTH_URL} className="login-with-google-btn">
                                     Швидка авторизація
                                 </a>
-                               </div>
+                            </div>
                         </div>
                         <div className='enter'>
                             {/*<Link href='/'>Повернутись на головну</Link>*/}
                             <button className='continue' type="submit">Увійти</button>
-
                         </div>
-                        <p className='registerLinkText'>Немає облікового запису? Тоді можете <Link style={{ color: 'blue' }} href='/register'>створити його</Link> </p>
+                        <p className='registerLinkText'>
+                            Немає облікового запису? Тоді можете <Link style={{ color: 'blue' }} to='/register'>створити його</Link>
+                        </p>
                     </form>
                 </div>
             </div>
         </div>
-    )
+    );
 }
