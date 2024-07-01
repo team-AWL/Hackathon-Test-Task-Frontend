@@ -1,8 +1,7 @@
-'use client'
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import '../../register/auth.css'
-import { login, resetPassword } from "@/util/api";
+import { login, resetPassword } from "../../../util/api";
 import { useRouter, useSearchParams } from "next/navigation";
 
 export default function ResetPassword() {

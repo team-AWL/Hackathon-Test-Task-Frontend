@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_BASE_URL, ACCESS_TOKEN } from '@/constants';
+import { API_BASE_URL, ACCESS_TOKEN } from '../constants/index';
 
 export async function signup(body) {
     const response = await axios.post(`${API_BASE_URL}/auth/signup`, body);
