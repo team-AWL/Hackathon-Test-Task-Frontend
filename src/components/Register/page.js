@@ -52,7 +52,7 @@ export default function Registration() {
                     <div className='functional_buttons'>
                         <Link to='/'>Повернутись на головну</Link>
                         {wantToAskHelp !== null && (
-                            <button onClick={handleNextStep}>Далі</button>
+                            <button className='continue' type="submit" onClick={handleNextStep} >Далі</button>
                         )}
                     </div>
                 </div>
