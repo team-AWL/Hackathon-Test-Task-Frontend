@@ -4,8 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleTheme } from '../../store';
 import { getCurrentUser } from '../../util/api';
+import { useTranslation } from 'react-i18next';
 
 const Header = () => {
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isDarkMode = useSelector(state => state.isDarkMode);
@@ -13,7 +15,7 @@ const Header = () => {
   const [hasAccessToken, setHasAccessToken] = useState(!!localStorage.getItem('accessToken'));
 
   const handleLogOut = () => {
-    const confirmLogout = window.confirm('Ви впевнені, що хочете вийти?');
+    const confirmLogout = window.confirm(t('logout_confirmation'));
     if (confirmLogout) {
       localStorage.removeItem('accessToken');
       setHasAccessToken(false);
@@ -61,17 +63,22 @@ const Header = () => {
     dispatch(toggleTheme());
   };
 
+  const toggleLanguage = () => {
+    const newLanguage = i18n.language === 'ua' ? 'en' : 'ua';
+    i18n.changeLanguage(newLanguage);
+  };
+
   return (
     <div className={`${styles.header} ${isDarkMode ? styles.dark : ''}`}>
       <div className={styles.logo} onClick={handleLogoClick}>
         <img src={isDarkMode ? '/logo-dark.svg' : '/logo.svg'} alt="Логотип" />
-        <div className={styles.logoText}> Допомога в дії </div>
+        <div className={styles.logoText}>{t('help_in_action')}</div>
       </div>
       <nav className={styles.nav}>
         <ul className={styles.navList}>
-          <li className={styles.navItem} style={{ cursor: "pointer" }} onClick={handleNeedsClick}>Потреби</li>
-          <li className={styles.navItem}>FAQ</li>
-          <li className={styles.navItem}>Про нас</li>
+          <li className={styles.navItem} style={{ cursor: "pointer" }} onClick={handleNeedsClick}>{t('needs')}</li>
+          <li className={styles.navItem}>{t('faq')}</li>
+          <li className={styles.navItem}>{t('about_us')}</li>
         </ul>
       </nav>
       {hasAccessToken && userAvatar && (
@@ -85,13 +92,15 @@ const Header = () => {
         className={styles.sunLight}
         onClick={handleSunClick}
       />
-      <span className={styles.country}>UA</span>
+      <span className={styles.country} onClick={toggleLanguage}>
+        {i18n.language === 'ua' ? 'UA' : 'EN'}
+      </span>
       {hasAccessToken ? (
-        <button onClick={handleLogOut} className={`${styles.loginButton} ${isDarkMode ? styles.dark : ''}`}>Вийти</button>
+        <button onClick={handleLogOut} className={`${styles.loginButton} ${isDarkMode ? styles.dark : ''}`}>{t('logout')}</button>
       ) : (
         <>
-          <button onClick={handleRedirectRegister} className={`${styles.registerButton} ${isDarkMode ? styles.dark : ''}`}>Зареєструватись</button>
-          <button onClick={handleRedirectLogin} className={`${styles.loginButton} ${isDarkMode ? styles.dark : ''}`}>Увійти</button>
+          <button onClick={handleRedirectRegister} className={`${styles.registerButton} ${isDarkMode ? styles.dark : ''}`}>{t('register')}</button>
+          <button onClick={handleRedirectLogin} className={`${styles.loginButton} ${isDarkMode ? styles.dark : ''}`}>{t('login')}</button>
         </>
       )}
     </div>
