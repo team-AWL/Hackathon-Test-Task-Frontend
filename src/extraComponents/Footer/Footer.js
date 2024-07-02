@@ -34,9 +34,9 @@ const Footer = () => {
   };
 
   return (
-<div className={styles.footer}>
- 
-  <div className={styles.footerinfo}>
+<div className={`${styles.footer} ${isDarkMode ? styles.dark : ''}`}>
+
+  <div className={`${styles.footerinfo} ${isDarkMode ? styles.dark : ''}`}>
     <div className={styles.footeremail}>
       <div className={styles.footeremail1}>
         <p>
@@ -44,17 +44,17 @@ const Footer = () => {
           сповіщення про нові запити
         </p>
       </div>
-      <div className={styles.footeremail2}>
+      <div className={`${styles.footeremail2} ${isDarkMode ? styles.dark : ''}`}>
         <input name="email" value={formData.email} onChange={handleInputChange} type="email" placeholder="твій Email..."  onKeyDown={handleKeyDown} />
       </div>
     </div>
     <div className={styles.socialnet}>
       <div className={styles.leftSection}>
         <div className={styles.logo}>
-          <img src="/logo.svg" alt="Логотип" />
-          <div className={styles.logoText}> Допомога в дії </div>
+          <img src={isDarkMode ? '/logo-dark.svg' : '/logo.svg'} alt="Логотип" />
+          <div className={`${styles.logoText} ${isDarkMode ? styles.dark : ''}`}> Допомога в дії </div>
         </div>
-        <div className={styles.aboutus}>
+        <div className={`${styles.aboutus} ${isDarkMode ? styles.dark : ''}`}>
           <p>Про нас</p>
           <p>Зареєструватись</p>
           <p>Потреби</p>
@@ -62,14 +62,14 @@ const Footer = () => {
         </div>
       </div>
       <div className={styles.icons}>
-        <img src="/instagram.svg" alt="Instagram" />
-        <img src="/facebook.svg" alt="Instagram" />
-        <img src="/x.svg" alt="Instagram" />
-        <img src="/linkedin.svg" alt="Instagram" />
+        <img src={isDarkMode ? '/instagram-dark.svg' : '/instagram.svg'} alt="Instagram" />
+        <img src={isDarkMode ? '/facebook-dark.svg' : '/facebook.svg'} alt="Instagram" />
+        <img src={isDarkMode ? '/x-dark.svg' : '/x.svg'} alt="Instagram" />
+        <img src={isDarkMode ? '/linkedin-dark.svg' : '/linkedin.svg'} alt="Instagram" />
       </div>
     </div>
   </div>
-  <div className={styles.content}>
+  <div className={`${styles.content} ${isDarkMode ? styles.dark : ''}`}>
     <p>Всі права захищено</p>
   </div>
 </div>
