@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import ResetPassword from './components/Forget/reset_password/page';
 import SentEmailAgain from './components/Forget/sent_email_again/page';
@@ -16,6 +17,11 @@ import Footer from './extraComponents/Footer/Footer';
 import CustomScrollbar from '../src/util/custom-scrollbar';
 
 function App() {
+  const { t, i18n } = useTranslation();
+  useEffect(() => {
+    document.title = t('page_title');
+  }, [i18n.language]);
+
   return (
     <Router>
       <CustomScrollbar>
