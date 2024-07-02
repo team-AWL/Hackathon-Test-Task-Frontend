@@ -1,8 +1,10 @@
 import styles from './footer.module.css';
 import {login, subscribeToNewNeeds} from "../../util/api";
 import {useState} from "react";
+import { useSelector } from 'react-redux';
 
 const Footer = () => {
+  const isDarkMode = useSelector(state => state.isDarkMode);
   const [formData, setFormData] = useState({
     email: ""
   });

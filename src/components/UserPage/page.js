@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import styles from './needs.module.css';
-import { useNavigate, useLocation } from 'react-router-dom';
 import { getCurrentUser, updateUserInfo } from '../../util/api';
+import { useLocation } from 'react-router-dom';
+import styles from './needs.module.css';
+
 
 const UserPage = () => {
     const [usermail, setUsermail] = useState('');
@@ -11,30 +12,28 @@ const UserPage = () => {
     const [editedUsername, setEditedUsername] = useState('');
     const [editedUserbio, setEditedUserbio] = useState('');
     const [userImg, setUserImg] = useState('');
-    const navigate = useNavigate();
+
     const location = useLocation();
-    const token_auth = new URLSearchParams(location.search).get('token');
-    const is_true = new URLSearchParams(location.search).get('reload');
+    const searchParams = new URLSearchParams(location.search);
+    const token_auth = searchParams.get('token');
+    const is_true = searchParams.get('reload');
 
     useEffect(() => {
         if (token_auth) {
             localStorage.setItem('accessToken', token_auth);
             getCurrentUserData(token_auth);
         }
+    }, [token_auth]);
 
-    }, []);
     useEffect(() => {
         const token = localStorage.getItem('accessToken');
         if (token) {
             getCurrentUserData(token);
         }
         if (is_true) {
-            navigate('/user-page');
+            window.location.replace('/user-page');
         }
-
-    }, []);
-
-
+    }, [is_true]);
 
     const getCurrentUserData = async (token) => {
         try {
@@ -114,7 +113,6 @@ const UserPage = () => {
                     )}
                 </div>
             </div>
-            <div className={styles.userpageline}></div>
         </div>
     );
 };

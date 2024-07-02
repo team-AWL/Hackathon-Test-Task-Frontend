@@ -87,7 +87,7 @@ const Header = () => {
       />
       <span className={styles.country}>UA</span>
       {hasAccessToken ? (
-        <button onClick={handleLogOut} className={styles.loginButton}>Вийти</button>
+        <button onClick={handleLogOut} className={`${styles.loginButton} ${isDarkMode ? styles.dark : ''}`}>Вийти</button>
       ) : (
         <>
           <button onClick={handleRedirectRegister} className={`${styles.registerButton} ${isDarkMode ? styles.dark : ''}`}>Зареєструватись</button>
