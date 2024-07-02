@@ -11,12 +11,12 @@ import Registration from './components/Register/page';
 import Registration1 from './components/Register/stage1/page';
 import Registration2 from './components/Register/stage2/page';
 import UserPage from './components/UserPage/page';
-import Header from './extraComponents/Header/Header';
-import Footer from './extraComponents/Footer/Footer';
 import CustomScrollbar from '../src/util/custom-scrollbar';
 import Loader from './util/loader';
 
 const Home = lazy(() => import('./components/Home/home'));
+const Header = lazy(() => import('./extraComponents/Header/Header'));
+const Footer = lazy(() => import('./extraComponents/Footer/Footer'));
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -27,8 +27,8 @@ function App() {
   return (
     <Router>
       <CustomScrollbar>
-        <Header />
         <Suspense fallback={<Loader />}>
+          <Header />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
@@ -41,8 +41,8 @@ function App() {
             <Route path="/register/stage2" element={<Registration2 />} />
             <Route path="/user-page" element={<UserPage />} />
           </Routes>
+          <Footer />
         </Suspense>
-        <Footer />
       </CustomScrollbar>
     </Router>
   );
